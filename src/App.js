@@ -107,8 +107,16 @@ function Page3() {
     setInputTodo(e.target.value);
   };
 
+  const handleEnterKey = (e) => {
+    console.log(e.keyCode);
+    if (e.keyCode === 13) {
+      addNewTodo();
+    }
+  };
+
   const addNewTodo = () => {
-    dispatch({ type: "ADD_TODO" });
+    dispatch({ type: "ADD_TODO", payload: inputTodo });
+    setInputTodo("");
   };
 
   return (
@@ -118,26 +126,25 @@ function Page3() {
         Total ToDo : {state.todoList.length}
       </div>
       <div>
-        <form>
-          <div>
-            <input
-              type="text"
-              value={inputTodo}
-              onChange={updateInputTodo}
-              className="form-control form-control-lg mb-1"
-              placeholder="Enter ToDo"
-            />
-          </div>
+        <div>
+          <input
+            type="text"
+            value={inputTodo}
+            onKeyUp={handleEnterKey}
+            onChange={updateInputTodo}
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter ToDo"
+          />
+        </div>
 
-          <div>
-            <input
-              type="button"
-              value="Add ToDo"
-              onClick={addNewTodo}
-              className="btn btn-dark w-100"
-            />
-          </div>
-        </form>
+        <div>
+          <input
+            type="button"
+            value="Add ToDo"
+            onClick={addNewTodo}
+            className="btn btn-dark w-100"
+          />
+        </div>
       </div>
 
       <h3 className="mt-4">ToDo List</h3>

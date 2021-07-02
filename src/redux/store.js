@@ -12,6 +12,8 @@ const initState = {
  * This function takes TWO PARAMETER =>
  * STATE
  * ACTION
+ *       TYPE :: REQUIRED
+ *       PAYLOAD :: OPTIONAL
  *
  * This is known as REDUCER (Very popular in the world of REDUX)
  *
@@ -29,7 +31,7 @@ function MyAppReducer(state = initState, action) {
       return { ...state, counter: newcounter1 };
 
     case "ADD_TODO":
-      const newTodoList = ["NEW TODO", ...state.todoList];
+      const newTodoList = [action.payload, ...state.todoList];
       return { ...state, todoList: newTodoList };
 
     default:

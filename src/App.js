@@ -83,8 +83,9 @@ function Page2() {
       <h1>Page2</h1>
       <div className="alert alert-secondary"> Counter : {state.counter}</div>
 
-      {state.cityList.map((item, index) => (
-        <div key={index} className="alert alert-secondary">
+      <h3>ToDo List</h3>
+      {state.todoList.map((item, index) => (
+        <div key={index} className="alert alert-primary">
           {item}
         </div>
       ))}
@@ -98,44 +99,53 @@ function Page2() {
 }
 
 function Page3() {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  // console.log("Page3", state);
+
+  const [inputTodo, setInputTodo] = useState("");
+  const updateInputTodo = (e) => {
+    setInputTodo(e.target.value);
+  };
+
+  const addNewTodo = () => {
+    dispatch({ type: "ADD_TODO" });
+  };
+
   return (
     <div>
       <h1>Page3</h1>
-      <div className="alert alert-secondary"> Counter : {state.counter}</div>
+      <div className="alert alert-secondary">
+        Total ToDo : {state.todoList.length}
+      </div>
       <div>
         <form>
           <div>
             <input
               type="text"
-              className="form-control mb-1"
-              placeholder="Enter username"
-            />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              className="form-control mb-1"
-              placeholder="Enter Password"
+              value={inputTodo}
+              onChange={updateInputTodo}
+              className="form-control form-control-lg mb-1"
+              placeholder="Enter ToDo"
             />
           </div>
 
           <div>
             <input
               type="button"
-              value="REGISTER"
+              value="Add ToDo"
+              onClick={addNewTodo}
               className="btn btn-dark w-100"
             />
           </div>
         </form>
       </div>
 
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem incidunt
-        sit impedit beatae magni vel quis, deserunt aperiam vero excepturi.
-      </p>
+      <h3 className="mt-4">ToDo List</h3>
+      {state.todoList.map((item, index) => (
+        <div key={index} className="alert alert-primary">
+          {item}
+        </div>
+      ))}
     </div>
   );
 }

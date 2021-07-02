@@ -1,13 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-      <Route exact path="/" component={MyAppHomePage} />
+      <div className="bg-primary text-light p-4 mb-2">
+        <h3>Home</h3>
+        <h3>Explore</h3>
+        <h3>Notification</h3>
+        <h3>Messages</h3>
+      </div>
 
+      <Route exact path="/" component={MyAppHomePage} />
       <Route exact path="/home" component={MyAppHomePage} />
       <Route exact path="/explore" component={MyAppExplorePage} />
       <Route exact path="/messages" component={MyAppMessagesPage} />
@@ -15,6 +21,7 @@ function App() {
     </Router>
   );
 }
+//http://localhost:3000
 //http://localhost:3000/home
 //http://localhost:3000/explore
 //http://localhost:3000/messages

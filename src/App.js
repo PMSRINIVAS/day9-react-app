@@ -6,11 +6,24 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <div className="bg-primary text-light p-4 mb-2">
-        <h3>Home</h3>
-        <h3>Explore</h3>
-        <h3>Notification</h3>
-        <h3>Messages</h3>
+      {/**COMMON NAVIGATION BAR WEBPAGE */}
+      {/** "d-flex" and "justify-content-between" are used for getting in same line and have space  */}
+      <div className="bg-primary text-light p-4 mb-2 d-flex justify-content-between">
+        <Link to="/home">
+          <h3 className="text-light">Home</h3>
+        </Link>
+
+        <Link to="/explore">
+          <h3 className="text-light">Explore</h3>
+        </Link>
+
+        <Link to="/notification">
+          <h3 className="text-light">Notification</h3>
+        </Link>
+
+        <Link to="/messages">
+          <h3 className="text-light">Messages</h3>
+        </Link>
       </div>
 
       <Route exact path="/" component={MyAppHomePage} />

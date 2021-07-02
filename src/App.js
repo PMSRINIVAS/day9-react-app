@@ -3,46 +3,64 @@ import "./App.css";
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import { MyAppHomePage } from "./pages/MyAppHomePage";
-import { MyAppExplorePage } from "./pages/MyAppExplorePage";
-import { MyAppNotificationPage } from "./pages/MyAppNotificationPage";
-import { MyAppMessagesPage } from "./pages/MyAppMessagesPage";
-
 function App() {
   return (
     <Router>
-      {/**COMMON NAVIGATION BAR WEBPAGE */}
-      {/** "d-flex" and "justify-content-between" are used for getting in same line and have space  */}
-      <div className="bg-primary text-light p-4 mb-2 d-flex justify-content-between">
-        <Link to="/home">
-          <h3 className="text-light">Home</h3>
+      <div className="bg-dark text-light p-2 d-flex justify-content-between">
+        <Link to="/page1">
+          <h3>Page1</h3>
         </Link>
 
-        <Link to="/explore">
-          <h3 className="text-light">Explore</h3>
+        <Link to="/page2">
+          <h3>Page2</h3>
         </Link>
-
-        <Link to="/notification">
-          <h3 className="text-light">Notification</h3>
-        </Link>
-
-        <Link to="/messages">
-          <h3 className="text-light">Messages</h3>
+        <Link to="/page3">
+          <h3>Page3</h3>
         </Link>
       </div>
 
-      <Route exact path="/" component={MyAppHomePage} />
-      <Route exact path="/home" component={MyAppHomePage} />
-      <Route exact path="/explore" component={MyAppExplorePage} />
-      <Route exact path="/messages" component={MyAppMessagesPage} />
-      <Route exact path="/notification" component={MyAppNotificationPage} />
+      <Route exact path="/" component={Page1} />
+      <Route exact path="/page1" component={Page1} />
+      <Route exact path="/page2" component={Page2} />
+      <Route exact path="/page3" component={Page3} />
     </Router>
   );
 }
-//http://localhost:3000
-//http://localhost:3000/home
-//http://localhost:3000/explore
-//http://localhost:3000/messages
-//http://localhost:3000/notification
+
+function Page1() {
+  return (
+    <div>
+      <h1>Page1</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem incidunt
+        atque placeat iste quis, accusamus sapiente velit ratione in molestias.
+      </p>
+    </div>
+  );
+}
+
+function Page2() {
+  return (
+    <div>
+      <h1>Page2</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque ad amet,
+        dolores dolore quod illo ab a error cum id!
+      </p>
+    </div>
+  );
+}
+
+function Page3() {
+  return (
+    <div>
+      <h1>Page3</h1>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem incidunt
+        sit impedit beatae magni vel quis, deserunt aperiam vero excepturi.
+      </p>
+    </div>
+  );
+}
 
 export default App;

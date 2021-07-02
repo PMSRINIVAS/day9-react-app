@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   return (
@@ -29,13 +29,36 @@ function App() {
 }
 
 function Page1() {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
   // console.log("Page1", state);
+
+  const incrementCounter = () => {
+    dispatch({ type: "COUNTER_INCREMENT" });
+  };
+
+  const decrementCounter = () => {
+    dispatch({ type: "COUNTER_DECREMENT" });
+  };
 
   return (
     <div>
       <h1>Page1</h1>
       <div className="alert alert-secondary"> Counter : {state.counter}</div>
+
+      <input
+        type="button"
+        value="INCREMENT"
+        className="btn btn-success w-100 mb-1"
+        onClick={incrementCounter}
+      />
+
+      <input
+        type="button"
+        value="DECREMENT"
+        className="btn btn-danger w-100 mb-1"
+        onClick={decrementCounter}
+      />
 
       {state.cityList.map((item, index) => (
         <div key={index} className="alert alert-secondary">

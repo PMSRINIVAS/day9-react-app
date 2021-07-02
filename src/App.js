@@ -6,13 +6,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <Route path="/home" component={MyAppHomePage} />
+      <Route exact path="/" component={MyAppHomePage} />
 
-      <Route path="/explore" component={MyAppExplorePage} />
-
-      <Route path="/messages" component={MyAppMessagesPage} />
-
-      <Route path="/notification" component={MyAppNotificationPage} />
+      <Route exact path="/home" component={MyAppHomePage} />
+      <Route exact path="/explore" component={MyAppExplorePage} />
+      <Route exact path="/messages" component={MyAppMessagesPage} />
+      <Route exact path="/notification" component={MyAppNotificationPage} />
     </Router>
   );
 }

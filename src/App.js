@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function App() {
   return (
@@ -28,11 +29,20 @@ function App() {
 }
 
 function Page1() {
-  const [counter, setCounter] = useState(100);
+  const state = useSelector((state) => state);
+  // console.log("Page1", state);
+
   return (
     <div>
       <h1>Page1</h1>
-      <div className="alert alert-secondary"> Counter : {counter}</div>
+      <div className="alert alert-secondary"> Counter : {state.counter}</div>
+
+      {state.cityList.map((item, index) => (
+        <div key={index} className="alert alert-secondary">
+          {item}
+        </div>
+      ))}
+
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem incidunt
         atque placeat iste quis, accusamus sapiente velit ratione in molestias.
@@ -42,17 +52,15 @@ function Page1() {
 }
 
 function Page2() {
-  const [cityList, setCityList] = useState([
-    "Delhi",
-    "Mumbai",
-    "Kolkata",
-    "Chennai",
-  ]);
+  const state = useSelector((state) => state);
+  // console.log("Page2", state);
+
   return (
     <div>
       <h1>Page2</h1>
+      <div className="alert alert-secondary"> Counter : {state.counter}</div>
 
-      {cityList.map((item, index) => (
+      {state.cityList.map((item, index) => (
         <div key={index} className="alert alert-secondary">
           {item}
         </div>
@@ -67,9 +75,12 @@ function Page2() {
 }
 
 function Page3() {
+  const state = useSelector((state) => state);
+  // console.log("Page3", state);
   return (
     <div>
       <h1>Page3</h1>
+      <div className="alert alert-secondary"> Counter : {state.counter}</div>
       <div>
         <form>
           <div>

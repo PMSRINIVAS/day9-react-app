@@ -1,17 +1,25 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <MyAppHomePage />
-      <MyAppExplorePage />
-      <MyAppNotificationPage />
-      <MyAppMessagesPage />
-    </div>
+    <Router>
+      <Route path="/home" component={MyAppHomePage} />
+
+      <Route path="/explore" component={MyAppExplorePage} />
+
+      <Route path="/messages" component={MyAppMessagesPage} />
+
+      <Route path="/notification" component={MyAppNotificationPage} />
+    </Router>
   );
 }
+//http://localhost:3000/home
+//http://localhost:3000/explore
+//http://localhost:3000/messages
+//http://localhost:3000/notification
 
 function MyAppHomePage() {
   const [list] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
